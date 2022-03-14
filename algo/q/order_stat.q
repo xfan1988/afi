@@ -50,4 +50,9 @@ update range_5_second:ask-bid from wj[w; `time; select time, size, price from tr
 (select exec_cnt:count i, fill_qty:sum size, fill_price:wavg[size;price] by `minute$time from order_execution)
     lj (select trade_cnt:count i, volume:sum size, vwap:wavg[size;price] by `minute$time from trade)
 
+/Visualze with q studio
+select time, sums size from trade   /Time series
+select mid:0.5*ask+bid from quote   /Histogram
 
+/Download data as csv; load with excel
+save `C:/temp/quote.csv
